@@ -85,4 +85,18 @@ module "vnet" {
 
 # Systen User defined Routes
 
-resource ""
+resource "azurerm_route" "default-route" {
+  name                = ""
+  location            = 
+  resource_group_name = 
+  route_table_name = 
+  address_prefix = "0.0.0.0/0"
+  next_hop_type = "VirtualAppliance"
+  next_hop_in_ip_address = var.hub_firewall_ip 
+ }
+ 
+# In the above route, there has to be a default route table, and since the   address_prefix = "0.0.0.0/0", next_hop is a firewall.
+
+
+
+
