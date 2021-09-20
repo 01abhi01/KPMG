@@ -1,0 +1,14 @@
+The meta data of a Azure instance in json formatted output can be done by the following Rest API call :
+
+1. The Azure Instance Metadata Service (IMDS) provides information about currently running virtual machine instances.
+This information includes the SKU, storage, network configurations, etc.
+
+IMDS is a REST API that's available at a well-known, non-routable IP address (169.254.169.254). 
+
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2021-02-01" | jq  
+
+This will give the metadata details of the Azure VM in a JSON format.
+
+Similarly, we can do the same for specific parameters , like network :
+
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01"
